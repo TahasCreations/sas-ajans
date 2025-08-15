@@ -20,7 +20,7 @@ export default function Home() {
         <div className="container mx-auto px-6 text-center text-white relative z-10">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
             Markanız İçin
-            <span className="block text-primary-400 text-4xl md:text-6xl mt-2 animate-slide-up">
+            <span className="block text-primary-400 font-pacifico text-4xl md:text-6xl mt-2 animate-slide-up">
               Yaratıcı Çözümler
             </span>
           </h1>
@@ -124,7 +124,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-                Neden <span className="text-primary-400">SAS Ajans</span>
+                Neden <span className="text-primary-400 font-pacifico">SAS Ajans</span>
               </h2>
               <p className="text-xl text-gray-600 mb-8">
                 Yılların deneyimi ve en son teknoloji ile beklentileri aşan ve iş başarısını artıran olağanüstü sonuçlar sunuyoruz.
