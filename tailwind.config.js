@@ -8,25 +8,19 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'pacifico': ['var(--font-pacifico)', 'cursive'],
+        'pacifico': ['Pacifico', 'cursive'],
       },
       colors: {
         primary: {
-          50: '#fefce8',
-          100: '#fef9c3',
-          200: '#fef08a',
-          300: '#fde047',
-          400: '#facc15',
-          500: '#eab308',
-          600: '#ca8a04',
-          700: '#a16207',
-          800: '#854d0e',
-          900: '#713f12',
+          400: '#fbbf24', // yellow-400
+          500: '#f59e0b', // yellow-500
+          600: '#d97706', // yellow-600
         }
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
+        'bounce-slow': 'bounce 2s infinite',
       },
       keyframes: {
         fadeIn: {
