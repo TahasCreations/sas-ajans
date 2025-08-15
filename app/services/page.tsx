@@ -3,101 +3,93 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
-import { Gift, Printer, Scissors, CreditCard, Mail, MapPin, Star, Clock, Users, Award } from 'lucide-react';
 
 export default function Services() {
   const services = [
     {
-      id: 'promosyon',
-      icon: Gift,
+      icon: 'ri-gift-line',
       title: 'Promosyon Ürünleri',
-      description: 'Markanızı güçlendiren ve kalıcı izlenimler bırakan özel kurumsal ve etkinlik hediyeleri.',
-      features: [
-        'Kurumsal promosyon ürünleri',
-        'Etkinlik hediyeleri',
-        'Özel tasarım promosyonlar',
-        'Toplu sipariş çözümleri',
-        'Kalite garantili ürünler'
-      ],
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+      description: 'Kalıcı izlenimler bırakan ve marka bilinirliğini güçlendiren özel kurumsal ve etkinlik hediyeleri.',
+      details: 'Markalı kalemler ve kupalardan özel kıyafetler ve teknoloji aksesuarlarına kadar, markanızı mükemmel şekilde temsil eden promosyon ürünleri yaratıyoruz. Ayrıca kupalar, madalyalar, plaketler ve firmalara özel ödül ürünleri.',
+      image: 'https://readdy.ai/api/search-image?query=Professional%20promotional%20products%20display%20including%20branded%20mugs%2C%20pens%2C%20notebooks%2C%20and%20corporate%20gifts%20arranged%20on%20clean%20white%20background.%20High-quality%20corporate%20giveaways%20and%20marketing%20materials%20with%20elegant%20presentation%20and%20professional%20lighting.%20Modern%20promotional%20items%20showcase%20for%20business%20branding.&width=600&height=400&seq=promo-products-1&orientation=landscape'
     },
     {
-      id: 'uv-baski',
-      icon: Printer,
+      icon: 'ri-printer-line',
       title: 'UV Baskı',
       description: 'Çeşitli yüzeylerde canlı renkler ve olağanüstü detay hassasiyeti ile yüksek kaliteli, dayanıklı baskılar.',
-      features: [
-        'Ahşap yüzey baskı',
-        'Plastik ve metal baskı',
-        'Cam ve seramik baskı',
-        'Özel efektli baskılar',
-        'Dayanıklı UV mürekkep'
-      ],
-      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2126&q=80'
+      details: 'Son teknoloji UV baskı teknolojimiz, ahşap, metal, cam ve plastik gibi malzemeler üzerinde solmaya dayanıklı, çizilmeye karşı dirençli kaplamalarla muhteşem sonuçlar sunar.',
+      image: 'https://readdy.ai/api/search-image?query=Modern%20UV%20printing%20machine%20in%20professional%20printing%20facility%20with%20colorful%20printed%20samples%20on%20various%20materials%20like%20wood%2C%20metal%2C%20and%20acrylic.%20High-tech%20printing%20equipment%20with%20professional%20lighting%20and%20clean%20industrial%20workspace.%20Advanced%20printing%20technology%20demonstration%20with%20quality%20output%20samples.&width=600&height=400&seq=uv-printing-1&orientation=landscape'
     },
     {
-      id: 'lazer-kesim',
-      icon: Scissors,
+      icon: 'ri-car-line',
+      title: 'Araç Reklamları',
+      description: 'Mobil reklam çözümleri ile markanızı şehirde hareket halinde tanıtın ve geniş kitlere ulaşın.',
+      details: 'Oto, minibüs, kamyon ve ticari araçlar için profesyonel kaplama hizmetleri. Dijital baskı teknolojisi ile dayanıklı, hava koşullarına dayanıklı vinil kaplamalar. Araçlarınızı yürüyen reklam panosu haline getirin.',
+      image: 'https://readdy.ai/api/search-image?query=Professional%20vehicle%20wrapping%20and%20advertising%20services%20showing%20cars%2C%20vans%2C%20and%20trucks%20with%20custom%20vinyl%20wraps%20and%20advertising%20graphics.%20Mobile%20advertising%20solutions%20with%20high-quality%20vehicle%20wraps%20and%20durable%20materials.%20Professional%20vehicle%20advertising%20and%20branding%20services.&width=600&height=400&seq=vehicle-ads-1&orientation=landscape'
+    },
+    {
+      icon: 'ri-window-line',
+      title: 'Cam Kaplamalar',
+      description: 'Bina camları ve vitrinler için profesyonel kaplama çözümleri ile görsel etki yaratın.',
+      details: 'Ofis binalarının cam cephelerine, mağaza vitrinlerine ve iç mekan camlarına uygulanan özel tasarım kaplamalar. Gizlilik sağlarken estetik görünüm sunar. Matbaasız ve dijital baskılı seçenekler mevcut.',
+      image: 'https://readdy.ai/api/search-image?query=Professional%20glass%20coating%20and%20window%20treatment%20services%20showing%20office%20buildings%2C%20store%20fronts%2C%20and%20interior%20glass%20surfaces%20with%20custom%20design%20coatings.%20Privacy%20solutions%20and%20aesthetic%20glass%20treatments%20for%20commercial%20spaces.%20Professional%20glass%20coating%20and%20window%20design%20services.&width=600&height=400&seq=glass-coatings-1&orientation=landscape'
+    },
+    {
+      icon: 'ri-image-line',
+      title: 'Poster ve Afiş Tasarımı',
+      description: 'Etkileyici poster, afiş, durak reklamları ve duvar giydirmeleri ile güçlü görsel iletişim.',
+      details: 'İç ve dış mekan kullanımı için dayanıklı poster ve afiş baskıları. Durak reklamları, billboard tasarımları, duvar giydirmeleri ve büyük format baskı çözümleri. Hava koşullarına dayanıklı malzemeler ve canlı renkler.',
+      image: 'https://readdy.ai/api/search-image?query=Professional%20poster%20and%20banner%20design%20services%20showing%20creative%20posters%2C%20banners%2C%20billboards%2C%20and%20wall%20coverings%20with%20eye-catching%20designs.%20Large%20format%20printing%20solutions%20for%20indoor%20and%20outdoor%20use.%20Professional%20poster%20design%20and%20printing%20services.&width=600&height=400&seq=poster-design-1&orientation=landscape'
+    },
+    {
+      icon: 'ri-scissors-cut-line',
       title: 'Lazer Kesim',
       description: 'Ahşap, akrilik ve daha fazla malzemede olağanüstü doğrulukla hassas kesim ve gravür işlemleri.',
-      features: [
-        'Ahşap lazer kesim',
-        'Akrilik kesim ve gravür',
-        'Deri ve kumaş işleme',
-        'Metal gravür',
-        'Hassas kesim teknolojisi'
-      ],
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+      details: 'Bilgisayar kontrollü lazer kesim ve gravür hizmetleri ile karmaşık tasarımlar, özel şekiller ve detaylı sanat eserleri için mükemmel hassasiyet sağlıyoruz.',
+      image: 'https://readdy.ai/api/search-image?query=Professional%20laser%20cutting%20and%20engraving%20services%20showing%20computer-controlled%20laser%20machines%20working%20on%20wood%2C%20acrylic%2C%20and%20other%20materials.%20Precise%20cutting%20and%20engraving%20technology%20for%20complex%20designs%20and%20detailed%20artwork.%20High-precision%20laser%20cutting%20and%20engraving%20equipment.&width=600&height=400&seq=laser-cutting-1&orientation=landscape'
     },
     {
-      id: 'kartvizit',
-      icon: CreditCard,
+      icon: 'ri-bank-card-line',
       title: 'Kartvizit Tasarımı',
       description: 'Güçlü ilk izlenimler yaratan ve kimliğinizi yansıtan profesyonel, marka odaklı tasarımlar.',
-      features: [
-        'Kurumsal kartvizit tasarımı',
-        'Özel baskı teknikleri',
-        'Farklı malzeme seçenekleri',
-        'Hızlı teslimat',
-        'Revizyon hakkı'
-      ],
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2011&q=80'
+      details: 'Premium malzemeler, benzersiz yüzey işlemleri ve yenilikçi düzenlemelerle profesyonelliğinizi ve marka kişiliğinizi sergileyen yaratıcı kartvizit tasarımları.',
+      image: 'https://readdy.ai/api/search-image?query=Professional%20business%20card%20design%20services%20showing%20creative%20and%20premium%20business%20card%20designs%20with%20unique%20surface%20treatments%20and%20innovative%20layouts.%20High-quality%20materials%20and%20professional%20business%20card%20solutions.%20Creative%20business%20card%20design%20and%20printing%20services.&width=600&height=400&seq=business-cards-1&orientation=landscape'
     },
     {
-      id: 'davetiye',
-      icon: Mail,
+      icon: 'ri-mail-line',
       title: 'Davetiye Tasarımı',
       description: 'Özel etkinlikler, düğünler ve kurumsal organizasyonlar için zarif ve kişiselleştirilmiş davetiyeler.',
-      features: [
-        'Düğün davetiyeleri',
-        'Kurumsal etkinlik davetiyeleri',
-        'Özel tasarım çözümler',
-        'Farklı baskı seçenekleri',
-        'Kişiselleştirilmiş içerik'
-      ],
-      image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+      details: 'Güzel tipografi, premium kağıtlar ve zarif bitirme dokunuşlarıyla özel etkinliğinizin özünü yakalayan özel davetiye tasarımları.',
+      image: 'https://readdy.ai/api/search-image?query=Professional%20invitation%20design%20services%20showing%20elegant%20and%20personalized%20invitations%20for%20special%20events%2C%20weddings%2C%20and%20corporate%20functions.%20Beautiful%20typography%2C%20premium%20papers%2C%20and%20elegant%20finishing%20touches.%20Custom%20invitation%20design%20and%20printing%20services.&width=600&height=400&seq=invitation-design-1&orientation=landscape'
     },
     {
-      id: 'tabela',
-      icon: MapPin,
-      title: 'Özel Tabela',
-      description: 'İç ve dış mekan işletme uygulamaları için şık pleksiglas ve standart tabela çözümleri.',
-      features: [
-        'İç mekan tabelaları',
-        'Dış mekan tabelaları',
-        'Pleksiglas tabelalar',
-        'LED aydınlatmalı tabelalar',
-        'Montaj hizmeti'
-      ],
-      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2126&q=80'
+      icon: 'ri-gift-2-line',
+      title: 'Özel Günler İçin Promosyon Setleri',
+      description: 'Mühendisler Günü, Öğretmenler Günü gibi özel günler için firmanızın logosuyla özel hediye setleri.',
+      details: 'Özel günleri kutlamak için tasarlanan promosyon setleri. Firmanızın logosunu taşıyan özel paketlemeler ve set içindeki tüm materyallerde marka kimliğinizin yer aldığı profesyonel hediye çözümleri. Çalışan motivasyonu ve müşteri ilişkilerini güçlendiren özel tarih odaklı hediye setleri.',
+      image: 'https://readdy.ai/api/search-image?query=Professional%20promotional%20gift%20sets%20for%20special%20occasions%20showing%20custom%20gift%20packages%20with%20company%20logos%20for%20special%20days%20like%20Engineers%20Day%2C%20Teachers%20Day%2C%20and%20other%20celebrations.%20Professional%20gift%20solutions%20with%20brand%20identity%20and%20employee%20motivation%20focus.%20Custom%20promotional%20gift%20sets%20and%20packaging%20services.&width=600&height=400&seq=gift-sets-1&orientation=landscape'
+    },
+    {
+      icon: 'ri-stamp-line',
+      title: 'Özel Mühürler',
+      description: 'Net, açık baskılar veren bireyler ve işletmeler için kişiselleştirilmiş lastik mühürler.',
+      details: 'Resmi belgeler ve markalama amaçları için özel spesifikasyonlarınıza göre üretilen yüksek kaliteli lastik mühürler, otomatik mühürler ve kabartma mühürleri.',
+      image: 'https://readdy.ai/api/search-image?query=Professional%20custom%20rubber%20stamp%20services%20showing%20high-quality%20rubber%20stamps%2C%20automatic%20stamps%2C%20and%20embossing%20stamps%20for%20official%20documents%20and%20branding%20purposes.%20Personalized%20stamp%20solutions%20with%20custom%20specifications%20and%20professional%20quality.%20Custom%20rubber%20stamp%20design%20and%20production%20services.&width=600&height=400&seq=custom-stamps-1&orientation=landscape'
+    },
+    {
+      icon: 'ri-layout-line',
+      title: 'Pleksiglas Tabela',
+      description: 'Modern estetiği uzun ömürlü kalite ile birleştiren şık, dayanıklı pleksi tabela çözümleri.',
+      details: 'LED arka aydınlatma, özel şekiller ve ofisler, perakende alanları ve kurumsal ortamlar için profesyonel montaj sistemleri olan çağdaş pleksiglas tabelalar.',
+      image: 'https://readdy.ai/api/search-image?query=Professional%20plexi%20signage%20solutions%20showing%20modern%20and%20stylish%20plexi%20signs%20with%20LED%20backlighting%2C%20custom%20shapes%2C%20and%20professional%20mounting%20systems%20for%20offices%2C%20retail%20spaces%2C%20and%20corporate%20environments.%20Contemporary%20plexi%20signage%20with%20long-lasting%20quality%20and%20modern%20aesthetics.%20Professional%20plexi%20signage%20design%20and%20installation%20services.&width=600&height=400&seq=plexi-signs-1&orientation=landscape'
+    },
+    {
+      icon: 'ri-road-map-line',
+      title: 'Standart Tabela',
+      description: 'Marka mesajınızı etkin şekilde ileten dış ve iç mekan işletme tabela çözümleri.',
+      details: 'Maksimum görünürlük ve etki için tasarlanmış mağaza cephesi tabelaları, yönlendirme tabelaları, güvenlik tabelaları ve promosyon panoları dahil kapsamlı tabela çözümleri.',
+      image: 'https://readdy.ai/api/search-image?query=Professional%20standard%20signage%20solutions%20showing%20comprehensive%20signage%20solutions%20including%20store%20front%20signs%2C%20directional%20signs%2C%20security%20signs%2C%20and%20promotional%20displays%20designed%20for%20maximum%20visibility%20and%20impact.%20Indoor%20and%20outdoor%20business%20signage%20solutions%20for%20effective%20brand%20messaging.%20Professional%20standard%20signage%20design%20and%20installation%20services.&width=600&height=400&seq=standard-signs-1&orientation=landscape'
     }
-  ];
-
-  const stats = [
-    { icon: Users, number: '500+', label: 'Mutlu Müşteri' },
-    { icon: Award, number: '1000+', label: 'Tamamlanan Proje' },
-    { icon: Clock, number: '5+', label: 'Yıllık Deneyim' },
-    { icon: Star, number: '4.9', label: 'Müşteri Puanı' }
   ];
 
   return (
@@ -105,88 +97,89 @@ export default function Services() {
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-primary-50 to-primary-100">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-black mb-6">
-            Hizmetlerimiz
+            <span className="text-yellow-400 font-['Pacifico']">Hizmetlerimiz</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Markanızın ihtiyaçlarına özel, yaratıcı ve kaliteli çözümler sunuyoruz. 
-            Her proje, benzersiz ve özel olarak tasarlanır.
+            Markanızı yükseltmek ve olağanüstü kalite ve yenilikçi tasarım yoluyla iş başarısını artırmak için tasarlanmış kapsamlı yaratıcı çözümler.
           </p>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
+      {/* Services Grid */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-8 h-8 text-primary-600" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div key={index} className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+                <div className="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center mb-4">
+                  <i className={`${service.icon} text-2xl text-yellow-600`}></i>
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-black mb-2">{stat.number}</div>
-                <div className="text-gray-600">{stat.label}</div>
+                <h3 className="text-xl font-bold text-black mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">{service.description}</p>
+                <p className="text-gray-500 mb-4 text-sm leading-relaxed">{service.details}</p>
+                <div className="flex justify-between items-center">
+                  <Link href="/contact" className="text-yellow-600 font-semibold hover:text-yellow-700 text-sm">
+                    Bu Hizmet İçin Teklif Alın
+                  </Link>
+                  <div className="w-24 h-16 bg-gray-100 rounded-lg overflow-hidden">
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Work Process */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Tüm Hizmetlerimiz</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Çalışma Sürecimiz</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Her hizmet, en yüksek kalite standartlarında ve müşteri memnuniyeti odaklı olarak sunulur.
+              İlk danışmanlıktan nihai teslimata kadar, her seferinde olağanüstü sonuçlar garanti eden kanıtlanmış bir süreci takip ediyoruz.
             </p>
           </div>
 
-          <div className="space-y-20">
-            {services.map((service, index) => (
-              <div key={service.id} id={service.id} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-              }`}>
-                <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <div className="flex items-center space-x-4 mb-6">
-                    <div className="w-16 h-16 bg-primary-100 rounded-xl flex items-center justify-center">
-                      <service.icon className="w-8 h-8 text-primary-600" />
-                    </div>
-                    <h3 className="text-3xl font-bold text-black">{service.title}</h3>
-                  </div>
-                  <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center space-x-3">
-                        <div className="w-5 h-5 bg-primary-400 rounded-full flex items-center justify-center flex-shrink-0">
-                          <div className="w-2 h-2 bg-white rounded-full"></div>
-                        </div>
-                        <span className="text-gray-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link 
-                    href="/contact" 
-                    className="btn-primary inline-block"
-                  >
-                    Teklif Alın
-                  </Link>
-                </div>
-                
-                <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-                  <img 
-                    src={service.image}
-                    alt={service.title}
-                    className="rounded-2xl shadow-custom object-cover w-full h-96"
-                    loading="lazy"
-                  />
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl font-bold text-yellow-600">1</span>
               </div>
-            ))}
+              <h3 className="text-xl font-bold text-black mb-3">Danışmanlık</h3>
+              <p className="text-gray-600">Proje ihtiyaçlarınızı mükemmel şekilde anlamak için vizyonunuzu, gereksinimlerinizi ve hedeflerinizi tartışıyoruz.</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl font-bold text-yellow-600">2</span>
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Tasarım</h3>
+              <p className="text-gray-600">Yaratıcı ekibimiz markanız ve hedeflerinizle uyumlu konseptler ve tasarımlar geliştirir.</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl font-bold text-yellow-600">3</span>
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Üretim</h3>
+              <p className="text-gray-600">En son teknoloji ve premium malzemeler kullanarak projenizi hassasiyetle hayata geçiriyoruz.</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl font-bold text-yellow-600">4</span>
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Teslimat</h3>
+              <p className="text-gray-600">Kalite kontrollü ve özenle paketlenmiş bitmiş ürünleriniz zamanında teslim edilir.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -194,18 +187,16 @@ export default function Services() {
       {/* CTA Section */}
       <section className="py-20 bg-black text-white">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Projenizi Başlatmaya Hazır Mısınız?
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Başlamaya Hazır Mısınız?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Uzman ekibimizle görüşün, projenizi detaylandırın ve olağanüstü sonuçlar elde edin.
+            Proje gereksinimlerinizi görüşmek ve hizmetlerimiz için kişiselleştirilmiş bir teklif almak üzere bugün bizimle iletişime geçin.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="btn-primary">
-              Ücretsiz Danışmanlık
+            <Link href="/contact" className="bg-yellow-400 text-black px-8 py-4 rounded-full text-lg font-semibold hover:bg-yellow-300 transition-colors">
+              Teklif İsteyin
             </Link>
-            <Link href="/contact" className="btn-secondary">
-              Fiyat Teklifi Alın
+            <Link href="tel:+902125550123" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-black transition-colors">
+              Hemen Arayın
             </Link>
           </div>
         </div>
