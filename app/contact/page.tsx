@@ -1,76 +1,44 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Link from 'next/link';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    company: '',
     service: '',
     message: ''
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' });
+      setSubmitMessage('Mesajınız için teşekkür ederiz! Size 24 saat içinde geri döneceğiz.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      });
     }, 2000);
   };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const contactInfo = [
-    {
-      icon: 'ri-phone-line',
-      title: 'Telefon',
-      info: '+90 212 555 0123',
-      description: 'Pazartesi - Cuma: 09:00 - 18:00'
-    },
-    {
-      icon: 'ri-mail-line',
-      title: 'E-posta',
-      info: 'info@sasajans.com',
-      description: '24 saat içinde yanıt alın'
-    },
-    {
-      icon: 'ri-map-pin-line',
-      title: 'Adres',
-      info: 'İstanbul, Türkiye',
-      description: 'Merkezi konum, kolay ulaşım'
-    }
-  ];
-
-  const services = [
-    'Promosyon Ürünleri',
-    'UV Baskı',
-    'Araç Reklamları',
-    'Cam Kaplamalar',
-    'Poster Tasarımı',
-    'Lazer Kesim',
-    'Kartvizit Tasarımı',
-    'Davetiye Tasarımı',
-    'Özel Mühürler',
-    'Pleksiglas Tabela',
-    'Standart Tabela'
-  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -80,64 +48,33 @@ export default function Contact() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-black mb-6">
-            <span className="text-yellow-400 font-['Pacifico']">İletişim</span>
+            <span className="text-yellow-400 font-['Pacifico']">İletişime</span> Geçin
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Proje gereksinimlerinizi görüşmek ve olağanüstü bir şey yaratmak için bizimle iletişime geçin.
+            Vizyonunuzu hayata geçirmeye hazır mısınız? Projeniz için ücretsiz danışmanlık ve kişiselleştirilmiş teklif almak üzere bugün bizimle iletişime geçin.
           </p>
         </div>
       </section>
 
-      {/* Contact Info & Form */}
-      <section className="py-20 bg-white">
+      {/* Contact Content */}
+      <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div>
-              <h2 className="text-3xl font-bold text-black mb-8">İletişim Bilgileri</h2>
-              
-              <div className="space-y-8">
-                {contactInfo.map((item, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <i className={`${item.icon} text-xl text-yellow-600`}></i>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-black mb-2">{item.title}</h3>
-                      <p className="text-lg text-gray-700 mb-1">{item.info}</p>
-                      <p className="text-gray-500">{item.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-12">
-                <h3 className="text-2xl font-bold text-black mb-6">Hizmet Alanlarımız</h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {services.map((service, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <i className="ri-check-line text-yellow-600"></i>
-                      <span className="text-gray-700">{service}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
             {/* Contact Form */}
-            <div className="bg-gray-50 p-8 rounded-2xl">
-              <h2 className="text-3xl font-bold text-black mb-6">Teklif İsteyin</h2>
-              
-              {submitStatus === 'success' && (
-                <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-                  Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <h2 className="text-3xl font-bold text-black mb-8">Bize Mesaj Gönderin</h2>
+
+              {submitMessage && (
+                <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6">
+                  {submitMessage}
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <form id="contact-form" onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                       Ad Soyad *
                     </label>
                     <input
@@ -145,147 +82,231 @@ export default function Contact() {
                       id="name"
                       name="name"
                       value={formData.name}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                      placeholder="Adınız ve soyadınız"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm"
+                      placeholder="Ad soyadınızı girin"
                     />
                   </div>
-                  
+
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      E-posta *
+                    <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                      E-posta Adresi *
                     </label>
                     <input
                       type="email"
                       id="email"
                       name="email"
                       value={formData.email}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                      placeholder="E-posta adresiniz"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm"
+                      placeholder="E-posta adresinizi girin"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Telefon
+                    <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                      Telefon Numarası
                     </label>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                      placeholder="Telefon numaranız"
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm"
+                      placeholder="Telefon numaranızı girin"
                     />
                   </div>
-                  
+
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                      Firma
+                    <label htmlFor="service" className="block text-sm font-semibold text-gray-700 mb-2">
+                      İlgilendiğiniz Hizmet
                     </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                      placeholder="Firma adınız"
-                    />
+                    <div className="relative">
+                      <select
+                        id="service"
+                        name="service"
+                        value={formData.service}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm appearance-none pr-8"
+                      >
+                        <option value="">Bir hizmet seçin</option>
+                        <option value="promotional-products">Promosyon Ürünleri</option>
+                        <option value="trophies-medals">Kupalar ve Madalyalar</option>
+                        <option value="custom-plaques">Özel Plaketler</option>
+                        <option value="uv-printing">UV Baskı</option>
+                        <option value="vehicle-wraps">Araç Reklamları</option>
+                        <option value="window-films">Cam Kaplamalar</option>
+                        <option value="posters-banners">Poster ve Afiş Tasarımı</option>
+                        <option value="wall-wrapping">Duvar Giydirmeleri</option>
+                        <option value="bus-stop-ads">Durak Reklamları</option>
+                        <option value="laser-cutting">Lazer Kesim</option>
+                        <option value="business-cards">Kartvizit Tasarımı</option>
+                        <option value="invitations">Davetiye Tasarımı</option>
+                        <option value="special-day-sets">Özel Günler İçin Promosyon Setleri</option>
+                        <option value="custom-stamps">Özel Mühürler</option>
+                        <option value="plexiglass-signage">Pleksiglas Tabela</option>
+                        <option value="standard-signage">Standart Tabela</option>
+                        <option value="multiple-services">Birden Fazla Hizmet</option>
+                      </select>
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <i className="ri-arrow-down-s-line text-gray-400"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                    Hizmet Türü
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                  >
-                    <option value="">Hizmet seçiniz</option>
-                    {services.map((service, index) => (
-                      <option key={index} value={service}>{service}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                     Proje Detayları *
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                     required
-                    rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                    placeholder="Proje gereksinimlerinizi ve detaylarınızı buraya yazın..."
-                  ></textarea>
+                    rows={6}
+                    maxLength={500}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm resize-vertical"
+                    placeholder="Proje gereksinimleriniz, zaman çizelgeniz ve özel detaylar hakkında bize bilgi verin..."
+                  />
+                  <div className="text-right text-sm text-gray-500 mt-1">
+                    {formData.message.length}/500 karakter
+                  </div>
                 </div>
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-yellow-400 text-black py-4 px-6 rounded-lg font-semibold hover:bg-yellow-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isSubmitting || formData.message.length > 500}
+                  className="w-full bg-yellow-400 text-black py-4 px-6 rounded-lg font-semibold hover:bg-yellow-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                 >
-                  {isSubmitting ? 'Gönderiliyor...' : 'Mesaj Gönder'}
+                  {isSubmitting ? (
+                    <span className="flex items-center justify-center">
+                      <i className="ri-loader-4-line animate-spin mr-2"></i>
+                      Mesaj Gönderiliyor...
+                    </span>
+                  ) : (
+                    'Mesaj Gönder'
+                  )}
                 </button>
               </form>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Map Placeholder */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-black mb-4">Konumumuz</h2>
-            <p className="text-gray-600">İstanbul'da merkezi konumda hizmet veriyoruz</p>
-          </div>
-          
-          <div className="bg-gray-200 h-96 rounded-2xl flex items-center justify-center">
-            <div className="text-center">
-              <i className="ri-map-pin-line text-6xl text-gray-400 mb-4"></i>
-              <p className="text-gray-500 text-lg">Harita burada görüntülenecek</p>
-              <p className="text-gray-400">Google Maps entegrasyonu</p>
+            {/* Contact Information */}
+            <div className="space-y-8">
+              <div className="bg-gray-50 rounded-2xl p-8">
+                <h2 className="text-3xl font-bold text-black mb-8">İletişim Bilgileri</h2>
+
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 flex items-center justify-center bg-yellow-400 rounded-lg flex-shrink-0">
+                      <i className="ri-phone-line text-xl text-black"></i>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-black mb-1">Telefon</h3>
+                      <a href="tel:+902125550123" className="text-gray-600 hover:text-yellow-600 cursor-pointer">
+                        +90 212 555 0123
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 flex items-center justify-center bg-yellow-400 rounded-lg flex-shrink-0">
+                      <i className="ri-mail-line text-xl text-black"></i>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-black mb-1">E-posta</h3>
+                      <a href="mailto:info@sasajans.com" className="text-gray-600 hover:text-yellow-600 cursor-pointer">
+                        info@sasajans.com
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 flex items-center justify-center bg-yellow-400 rounded-lg flex-shrink-0">
+                      <i className="ri-map-pin-line text-xl text-black"></i>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-black mb-1">Adres</h3>
+                      <p className="text-gray-600">
+                        Beşiktaş, İstanbul<br />
+                        Türkiye 34357
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 flex items-center justify-center bg-yellow-400 rounded-lg flex-shrink-0">
+                      <i className="ri-time-line text-xl text-black"></i>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-black mb-1">Çalışma Saatleri</h3>
+                      <p className="text-gray-600">
+                        Pazartesi - Cuma: 09:00 - 18:00<br />
+                        Cumartesi: 10:00 - 16:00<br />
+                        Pazar: Kapalı
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social Media */}
+              <div className="bg-black rounded-2xl p-8 text-white">
+                <h3 className="text-2xl font-bold mb-6">Bizi Takip Edin</h3>
+                <div className="flex space-x-4 mb-6">
+                  <a href="#" className="w-12 h-12 flex items-center justify-center bg-gray-800 rounded-lg hover:bg-yellow-400 hover:text-black transition-colors cursor-pointer">
+                    <i className="ri-facebook-fill text-xl"></i>
+                  </a>
+                  <a href="#" className="w-12 h-12 flex items-center justify-center bg-gray-800 rounded-lg hover:bg-yellow-400 hover:text-black transition-colors cursor-pointer">
+                    <i className="ri-instagram-line text-xl"></i>
+                  </a>
+                  <a href="#" className="w-12 h-12 flex items-center justify-center bg-gray-800 rounded-lg hover:bg-yellow-400 hover:text-black transition-colors cursor-pointer">
+                    <i className="ri-linkedin-fill text-xl"></i>
+                  </a>
+                  <a href="#" className="w-12 h-12 flex items-center justify-center bg-gray-800 rounded-lg hover:bg-yellow-400 hover:text-black transition-colors cursor-pointer">
+                    <i className="ri-twitter-fill text-xl"></i>
+                  </a>
+                </div>
+                <p className="text-gray-300">
+                  En son projelerimiz ve yaratıcı ilhamımızla sosyal medyada güncel kalın.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Preview */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-black mb-6">Sık Sorulan Sorular</h2>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Projeleriniz hakkında merak ettiğiniz soruların cevaplarını bulun.
-          </p>
-          <div className="bg-yellow-50 p-8 rounded-2xl max-w-2xl mx-auto">
-            <h3 className="text-xl font-semibold text-black mb-4">Proje süreçleri nasıl işliyor?</h3>
-            <p className="text-gray-700 mb-6">
-              Proje süreçlerimiz danışmanlık, tasarım, üretim ve teslimat aşamalarından oluşur. 
-              Her aşamada sizinle yakın iletişim halinde çalışırız.
+      {/* Map Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-black mb-4">Stüdyomuzu Ziyaret Edin</h2>
+            <p className="text-xl text-gray-600">
+              İstanbul&apos;un kalbinde yer alan modern stüdyomuz, en son teknoloji ile donatılmış ve yaratıcı profesyonellerle çalışmaktadır.
             </p>
-            <Link href="/contact" className="text-yellow-600 font-semibold hover:text-yellow-700">
-              Daha fazla bilgi için tıklayın →
-            </Link>
+          </div>
+
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.8273647743056!2d29.0084853156494!3d41.04303007929665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7650656bd63%3A0x8ca058b28c20b6c3!2sBe%C5%9Fikta%C5%9F%2C%20Istanbul%2C%20Turkey!5e0!3m2!1sen!2s!4v1639583021845!5m2!1sen!2s"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="SAS Ajans Konum"
+            />
           </div>
         </div>
       </section>
-
+      
       <Footer />
     </div>
   );
